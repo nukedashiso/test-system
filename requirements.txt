@@ -3,4 +3,10 @@ pandas
 numpy
 scipy
 matplotlib
-openpyxl
+openpyxl>=3.1.0      # 讀 .xlsx
+xlrd==1.2.0          # 讀 .xls（2.x 不支援 .xls）
+pyxlsb               # 讀 .xlsb（如需）
+statsmodels          # Tukey HSD 事後比較
+scikit-posthocs      # Dunn 事後比較
+
+
