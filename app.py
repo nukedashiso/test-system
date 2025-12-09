@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 統計檢定小幫手：多測站 × 三階段 × 多指標（MK/SMK + ANOVA/Kruskal）
+# 統計檢定小幫手：（MK/SMK + ANOVA/Kruskal）
 # 作者：你 & ChatGPT
 
 import os
@@ -13,10 +13,10 @@ from scipy import stats
 from scipy.stats import norm
 
 # ==== 基本設定 ====
-st.set_page_config(page_title="統計檢定小幫手（多測站 × 三階段）", layout="wide")
-st.title("📊 統計檢定小幫手（多測站 × 三階段）")
+st.set_page_config(page_title="統計檢定小幫手", layout="wide")
+st.title("📊 統計檢定小幫手")
 
-PHASE_LEVELS = ["環調階段", "施工前", "施工階段"]  # 三階段固定排序
+PHASE_LEVELS = ["施工前", "施工階段"]  # 二階段固定排序
 
 # ==== 共用工具 ====
 @st.cache_data(show_spinner=False)
@@ -298,8 +298,8 @@ with tab1:
 
 # ========== Tab 2：跨階段差異 ==========
 with tab2:
-    st.subheader("跨階段差異（同測站內比較三階段）")
-    st.info("選擇單一測站與單一指標，對三階段做 ANOVA 或 Kruskal–Wallis；可選擇事後比較（Tukey / Dunn）")
+    st.subheader("跨階段差異")
+    st.info("選擇單一測站與單一指標，對二階段做 ANOVA 或 Kruskal–Wallis；可選擇事後比較（Tukey / Dunn）")
 
     stn2 = st.selectbox("測站", options=sel_stations if sel_stations else stations)
     m2 = st.selectbox("指標", options=sel_metrics if sel_metrics else numeric_cols)
@@ -393,3 +393,4 @@ with st.expander("說明 / 注意事項"):
 - **資料清理**：字串中的 `<`、`ND`、`—`、`-` 會被移除再轉數值，無法轉者為 NaN。
         """
     )
+
